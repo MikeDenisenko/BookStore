@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="shortcut icon" href="/resources/static/images/favicon.ico" />
+    <link rel="stylesheet" href="/resources/static/css/topnav.css">
+    <link rel="stylesheet" href="/resources/static/css/bookstore.css">
+    <link rel="stylesheet" href="/resources/static/css/form.css">
+    <title>User profile</title>
+</head>
+<body>
+<script th:src="@{/resources/static/js/ToolTip.js}" ></script>
+
+<div class="topnav">
+    <h1> Hello, <span th:text="${currentUser}"></span> !
+        <a href="/logout" >LOGOUT</a></h1>
+</div>
+
+<div class="sidenav" align="left">
+    <a id="selected" href="/admin/profile" class="">Profile</a>
+    <a href="/admin">Users</a>
+    <a href="/admin/books">Books</a>
+</div>
+
+<div class="outer">
+    <div class="form2">
+    <h1>User profile</h1>
+        <img id="profileImage" th:src="@{/resources/static/images/ProfileImage.png}" height="100" width="100"/>
+    <p><label for="name">Name:</label>
+        <span id="name" th:text="${user.name}"></span></p>
+    <p><label for="email">Email:</label>
+        <span id="email" th:text="${user.email}"></span></p>
+    <p><label for="birthday">Birthday:</label>
+        <span id="birthday" th:maxlength="10" size="10" th:text="${user.birthday}"></span></p>
+    <p><label for="gender">Gender:</label>
+        <span id="gender" th:text="${user.gender}"></span></p>
+    <p><label for="role">Role:</label>
+        <span id="role" th:text="${user.role.title}"></span></p>
+    </div>
+</div>
+</body>
+</html>

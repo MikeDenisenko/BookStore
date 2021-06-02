@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Greeting you at admin page!</title>
+    <link rel="shortcut icon" href="/resources/static/images/favicon.ico" />
+    <link rel="stylesheet" href="/resources/static/css/bookstore.css">
+    <link rel="stylesheet" href="/resources/static/css/topnav.css">
+    <link rel="stylesheet" href="/resources/static/css/usersTable.css">
+</head>
+<body>
+<div class="topnav">
+    <h1> Hello, <span th:text="${currentUser}"></span> !
+    <a href="/logout" >LOGOUT</a></h1>
+</div>
+
+<div class="sidenav" align="left">
+    <a href="#" class="">Profile</a>
+    <a href="#">Users</a>
+    <a href="#">Books</a>
+</div>
+
+<div>
+    <table id="customers" align="center">
+        <tr>
+            <td>ID</td>
+            <td>TITLE</td>
+            <td>PHOTO</td>
+            <td>PRICE</td>
+            <td>QUANTITY</td>
+        </tr>
+        <tr th:each="detail : ${orderDetails}">
+            <td th:text="${detail.id}"></td>
+            <td th:text="${detail.book.name}"></td>
+            <td><img id="image" th:src="${detail.book.photoPath}" width="50" height="80" alt=""></img></td>
+            <td th:text="${detail.price}"></td>
+            <td th:text="${detail.quantityInOrder}"></td>
+        </tr>
+        <tr>
+        <form th:method="GET" th:action="@{/admin/users/add}" th:align="center" >
+            <input type="hidden" name="pageTitle" value="CreateUser">
+           <td><input type="submit" value="Add user"></td>
+        </form>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

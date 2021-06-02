@@ -1,0 +1,30 @@
+version: "2.1"
+services:
+
+  denisenko-mysql:
+    build: db
+    image: mysql:8
+    networks:
+      - denisenko-javascript-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=7555
+      - MYSQL_DATABASE=denisenko
+
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  denisenko-javascript:
+    build: .
+    image: hibernate
+    ports:
+      - "8080:8080"
+    networks:
+      - denisenko-javascript-mysql
+    depends_on:
+       denisenko-mysql:
+          condition: service_healthy
+
+networks:
+  denisenko-javascript-mysql:

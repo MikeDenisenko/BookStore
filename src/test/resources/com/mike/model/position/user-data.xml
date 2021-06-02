@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <user id="1" name="TomasAnderson" password="ThPass" birthday="2001-02-16" gender="M" email="realworld@gmat.tom" regist_date="2020-03-15" is_admin="false"/>
+    <user id="2" name="TomasAnderson" password="ThPass" birthday="2001-02-16" gender="M" email="realworld@gmat.tom" regist_date="2020-03-15" is_admin="false"/>
+</dataset>

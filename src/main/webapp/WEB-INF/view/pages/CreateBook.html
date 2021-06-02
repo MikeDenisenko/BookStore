@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="shortcut icon" href="/resources/static/images/favicon.ico" />
+    <link rel="stylesheet" href="/resources/static/css/form.css">
+    <title>Create book</title>
+</head>
+<body>
+<script th:src="@{/resources/static/js/ToolTip.js}" ></script>
+
+<div class="outer">
+    <div class="form">
+<h1>Create book</h1>
+
+<form th:method="POST" th:action="@{/admin/books/add}" th:object="${book}" >
+
+    <p><input data-tooltip="Enter book title, please." type="text" th:field="*{name}" id="name" placeholder="Name"/>
+
+    <p><input data-tooltip="Enter book number left in store, please." type="password" th:field="*{quantityLeftInStore}" id="quantity" placeholder="Quantity"/>
+
+    <p><input data-tooltip="Enter actual price, please." type="password" th:field="*{actualPrice}" id="price" placeholder="Price"/>
+
+    <p><input data-tooltip="Enter photo path, please." type="email" th:field="*{photoPath}" id="photo" placeholder="Photo"/>
+
+    <p><input data-tooltip="Choose visibility, please." type="radio" th:field="*{visibility}" id="visibility"/>
+    <p>
+        <input class="formButton" type="submit" value="Submit">
+        <input class="formButton" type="reset" value="Reset">
+    <p>
+        <button class="button" onclick="location.href='/'" type="button">Back</button>
+    </form>
+    </div>
+</div>
+</body>
+</html>

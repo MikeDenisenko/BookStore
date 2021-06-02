@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="shortcut icon" href="/resources/static/images/favicon.ico" />
+    <link rel="stylesheet" href="/resources/static/css/form.css">
+    <title>Create user</title>
+</head>
+<body>
+<script th:src="@{/resources/static/js/ToolTip.js}" ></script>
+
+<div class="outer">
+    <div class="form">
+<h1>Create user</h1>
+
+<form th:method="POST" th:action="@{/admin/users/add}" th:object="${user}" >
+<input type="hidden" name="captcha" id="captcha" value="false"/>
+    <input type="hidden" name="nameValidationResult" id="nameValidationResult">
+    <input type="hidden" name="captchaValidationResult" id="captchaValidationResult">
+
+    <p><input data-tooltip="Enter your name, please." type="text" th:field="*{name}" id="name" placeholder="Name"/>
+    <ul>
+    <li th:each="err : ${#fields.errors('name')}" th:text="${err}" class="error" ></li>
+    </ul>
+
+    <p><input data-tooltip="Enter your password, please." type="password" th:field="*{password}" id="password" placeholder="Password"/>
+    <ul>
+    <li th:each="err : ${#fields.errors('password')}" th:text="${err}" class="error" ></li>
+    </ul>
+
+    <p><input data-tooltip="Confirm password, please." type="password" th:field="*{confirmPassword}" id="confirmPassword" placeholder="Confirm password"/>
+    <ul>
+        <li th:each="err : ${#fields.errors('confirmPassword')}" th:text="${err}" class="error" ></li>
+    </ul>
+
+    <p><input data-tooltip="Enter your email, please." type="email" th:field="*{email}" id="email" placeholder="Email"/>
+    <ul>
+        <li th:each="err : ${#fields.errors('email')}" th:text="${err}" class="error" ></li>
+    </ul>
+
+    <p><input data-tooltip="Enter your birthday date, please." type="date" th:field="*{birthday}" id="birthday" placeholder="Birthday"/>
+    <ul>
+        <li th:each="err : ${#fields.errors('birthday')}" th:text="${err}" class="error" ></li>
+    </ul>
+
+    <p><select data-tooltip="Select the correct option, please." th:field="*{gender}" id="gender">
+        <option th:value="''" >Gender</option>
+        <option th:value="'M'" th:text="Male">Male</option>
+        <option th:value="'F'" th:text="Female">Female</option>
+    </select>
+    <ul>
+        <li th:each="err : ${#fields.errors('gender')}" th:text="${err}" class="error" ></li>
+    </ul>
+
+    <p><select data-tooltip="Select the correct option, please." th:field="*{role}" id="role">
+        <option th:value="''" >Role</option>
+        <option th:value="user" th:text="User">User</option>
+        <option th:value="admin" th:text="Admin">Admin</option>
+    </select>
+    <ul>
+        <li th:each="err : ${#fields.errors('role')}" th:text="${err}" class="error" ></li>
+    </ul>
+    <p>
+        <input class="formButton" type="submit" value="Submit">
+        <input class="formButton" type="reset" value="Reset">
+    <p>
+        <button class="button" onclick="location.href='/'" type="button">Back</button>
+    </form>
+    </div>
+</div>
+</body>
+</html>
